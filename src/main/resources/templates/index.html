@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Task1-1</title>
+        <link rel="stylesheet" type="text/css" th:href="@{'/css/bootstrap.min.css'}">
+        <script type="text/javascript" th:src="@{'/js/bootstrap.bundle.js'}"></script>
+    </head>
+
+    <body>
+
+        <div class="container mt-3">
+
+            <div class="header mb-2 text-center">
+                <h1 style="font-weight: bold">ELECTRONIC SHOP ITEMS</h1>
+            </div>
+
+            <div class="mb-3 align-content-center d-flex justify-content-center">
+                <a href="/add-item-page" class="btn btn-primary">ADD ITEM +</a>
+            </div>
+
+            <div class="row">
+                <div th:each="item : ${items}" class="col-md-4 mb-4 text-center">
+                    <div class="card">
+                        <div class="card-header" style="padding: 15px;">
+                            <h3 class="card-title" th:text="${item.name}"></h3>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title" style="  color: #368751;" th:text="${item.description}"></h3>
+                            <p class="card-text" style="" th:text="'$' + ${item.price}"></p>
+                            <a th:href="@{'/details/' + ${item.id}}">
+<!--                            <a th:href="@{/details(id=${item.id})}">-->
+                                <button class="btn btn-success" style="width: 100%;">DETAILS</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
